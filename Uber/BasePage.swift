@@ -21,4 +21,18 @@ class BasePage: BaseViewCtr {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setNavigationItem(title:String,selector:Selector,isRight:Bool){
+        let item:UIBarButtonItem!
+        if title.hasSuffix(".png"){
+            item = UIBarButtonItem(image: UIImage.init(named: title), style: .plain, target: self, action: selector)
+        }else{
+            item = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
+        }
+        if isRight{
+            self.navigationItem.setRightBarButton(item, animated: true)
+        }else{
+            self.navigationItem.setLeftBarButton(item, animated: true)
+        }
+    }
 }

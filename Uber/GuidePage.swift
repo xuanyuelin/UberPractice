@@ -14,11 +14,12 @@ class GuidePage: BasePage {
     @IBOutlet var backImg:UIImageView!
     var player:AVPlayer!
     var playerItem:AVPlayerItem!
+    var location:GLocation?//需声明为全局变量，方法内调用完被释放，一闪而过
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initPlayVideo()
-        doAnimation()
+//        initPlayVideo()
+//        doAnimation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,4 +79,13 @@ class GuidePage: BasePage {
         player.play()
     }
 
+    @IBAction func doLogin(_ sender: UIButton) {
+        location = GLocation()
+        location?.startLocation()
+    }
+    @IBAction func doRegister(_ sender: UIButton) {
+        let page = CreateAccountPage()
+        let navPage = UINavigationController(rootViewController: page)
+        self.present(navPage, animated: true, completion: nil)
+    }
 }

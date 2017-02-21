@@ -20,12 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window = UIWindow(frame: UIScreen.main.bounds)
         showLaunchPage()
+//        showHomePage()
+        
         return true
     }
 
     func showLaunchPage(){
         let page = GuidePage()
         window?.rootViewController = page
+        window?.makeKeyAndVisible()
+    }
+    func showHomePage(){
+        let page = HomePage()
+        let navPage = UINavigationController(rootViewController: page)
+        window?.rootViewController = navPage
         window?.makeKeyAndVisible()
     }
     func applicationWillResignActive(_ application: UIApplication) {
