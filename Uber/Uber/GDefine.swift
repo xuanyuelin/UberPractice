@@ -16,6 +16,9 @@ let iOS8:Float = 8.0
  */
 let URL_TN_Normal = "http://101.231.204.84:8091/sim/getacptn"
 let URL_TN_Configure = "http://101.231.204.84:8091/sim/app.jsp?user=123456789"
+let BaiDu_AK = "oW6HGmFBUCEbO7LtzxUUsOineSlg3PC2"
+let OriginalY = 39.915-0.4
+let OriginalX = 116.404-0.1
 
 func GLog(message:String,function:String = #function){
     #if DEBUG

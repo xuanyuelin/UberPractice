@@ -12,16 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var mapManager:BMKMapManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if isSystemEqualOrGreateriOS8(){
             GLog(message: "startUp")
         }
         window = UIWindow(frame: UIScreen.main.bounds)
-        showLaunchPage()
-//        showHomePage()
-        
+//        showLaunchPage()
+        showHomePage()
+        addMap()
         return true
     }
 
@@ -35,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navPage = UINavigationController(rootViewController: page)
         window?.rootViewController = navPage
         window?.makeKeyAndVisible()
+    }
+    func addMap(){
+        mapManager = BMKMapManager()
+        let ret = mapManager?.start(BaiDu_AK, generalDelegate: nil)
+        if !ret!{
+            GLog(message: "manager start failed")
+        }
     }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
